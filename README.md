@@ -1,6 +1,6 @@
-<div style="text-align: center;">
+<p align="center">
   <img src="./assets/icon-large.png" />
-</div>
+</p>
 
 ### **Copy all Chrome tab urls**
 
