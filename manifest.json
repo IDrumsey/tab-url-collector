@@ -2,7 +2,7 @@
   "name": "Tab URL Collector",
   "version": "0.1.0",
   "description": "Copy the URLs of all open tabs and their history",
-  "permissions": ["tabs", "history"],
+  "permissions": ["tabs"],
 
   "action": {
     "default_icon": "assets/icon-24.png",
