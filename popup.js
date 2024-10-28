@@ -6,17 +6,28 @@ document.addEventListener('DOMContentLoaded', function() {
       let urls = tabs.map(t => t.url)
 
       const strippedURLs = urls.map(url => stripURLParams(url))
+
+      const numElementsCopiedTextElement = document.getElementById('numURLs')
+
       copyURLs(strippedURLs)
+      // show how many urls are copied in the popup
+      .then(function() {
+    
+        numElementsCopiedTextElement.innerText = `${urls.length} URLs copied`
+      })
+      
+      // reset the popup to not show how many urls copied
+      .then(() => {
+        setTimeout(() => {
+          numElementsCopiedTextElement.innerText = '...'
+        }, [3000])
+      })
     })
   })
 })
 
-function copyURLs(urls) {
-  navigator.clipboard.writeText(urls.join('\n')).then(function() {
-    const numElementsCopiedTextElement = document.getElementById('numURLs')
-
-    numElementsCopiedTextElement.innerText = `${urls.length} URLs copied`
-  })
+async function copyURLs(urls) {
+  navigator.clipboard.writeText(urls.join('\n'))
 }
 
 
