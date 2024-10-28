@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let copyButton = document.getElementById('copyButton')
 
   copyButton.addEventListener('click', function() {
-    chrome.tabs.query({}, async function(tabs) {
+    chrome.tabs.query({currentWindow: true}, async function(tabs) {
       let urls = tabs.map(t => t.url)
 
       const strippedURLs = urls.map(url => stripURLParams(url))
