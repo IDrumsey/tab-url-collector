@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.query({currentWindow: true}, async function(tabs) {
       let urls = tabs.map(t => t.url)
 
-      const strippedURLs = urls.map(url => stripURLParams(url))
-
       const numElementsCopiedTextElement = document.getElementById('numURLs')
 
-      copyURLs(strippedURLs)
+      copyURLs(urls)
       // show how many urls are copied in the popup
       .then(function() {
     
@@ -28,14 +26,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function copyURLs(urls) {
   navigator.clipboard.writeText(urls.join('\n'))
-}
-
-
-function stripURLParams(url) {
-
-  const urlObj = new URL(url)
-
-  urlObj.search = ''
-
-  return urlObj.toString()
 }
